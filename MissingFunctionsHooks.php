@@ -20,7 +20,7 @@ class MissingFunctionsHooks {
 		$values = explode($insep, $text);
 
 		foreach ($values as $idx=>$val){
-			$output .= $parser->replaceVariables("{{{$template}|1=$val|userparam=$userparam}}");
+			$output .= $parser->replaceVariables("{{{$template}|1=$val|#=$idx|#userparam=$userparam}}");
 			if ($idx != count($values)-1)
 				$output .= $outsep;
 		}
