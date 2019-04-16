@@ -1,6 +1,6 @@
 # MissingFunctions
 
-[This extension](https://github.com/Gittenburg/vowi/tree/master/MissingFunctions) should work for MediaWiki 1.31.1 and higher and only provides two [parser functions](https://www.mediawiki.org/wiki/Manual:Parser_functions):
+[This extension](https://github.com/Gittenburg/MissingFunctions) should work for MediaWiki 1.31.1 and higher and only provides two [parser functions](https://www.mediawiki.org/wiki/Manual:Parser_functions):
 
 * `{{#maptemplate:text|template|insep|outsep}}`<br>
   Splits the provided text on *insep*, wrapping each part in the given *template*, optionally followed by an *outsep*.
