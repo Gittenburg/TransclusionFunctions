@@ -1,10 +1,10 @@
 {
-	"name": "MissingFunctions",
+	"name": "TransclusionFunctions",
 	"type": "parserhook",
 	"license-name": "MIT",
 	"author": "Gittenburg",
-	"url": "https://github.com/Gittenburg/MissingFunctions",
-	"version": "1.0.2",
+	"url": "https://github.com/Gittenburg/TransclusionFunctions",
+	"version": "0.1.0",
 	"description": "Provides <code>maptemplate</code> and <code>frametitle</code> parser functions.",
 	"MessagesDirs": {
 		"ExampleExtension": [
@@ -12,13 +12,13 @@
 		]
 	},
 	"AutoloadClasses": {
-		"MissingFunctionsHooks": "MissingFunctionsHooks.php"
+		"TransclusionFunctionsHooks": "TransclusionFunctionsHooks.php"
 	},
 	"ExtensionMessagesFiles": {
-		"MissingFunctionsMagic": "MissingFunctions.i18n.php"
+		"TransclusionFunctionsMagic": "TransclusionFunctions.i18n.php"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "MissingFunctionsHooks::onParserFirstCallInit"
+		"ParserFirstCallInit": "TransclusionFunctionsHooks::onParserFirstCallInit"
 	},
 	"manifest_version": 1
 }

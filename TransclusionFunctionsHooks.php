@@ -1,5 +1,5 @@
 <?php
-class MissingFunctionsHooks {
+class TransclusionFunctionsHooks {
 	public static function onParserFirstCallInit( Parser $parser ) {
 		$parser->setFunctionHook( 'maptemplate', [ self::class, 'renderMapTemplate' ]);
 		$parser->setFunctionHook( 'frametitle', [ self::class, 'renderFrameTitle' ], SFH_OBJECT_ARGS);
