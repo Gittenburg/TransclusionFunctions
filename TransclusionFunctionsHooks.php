@@ -3,6 +3,7 @@ class TransclusionFunctionsHooks {
 	public static function onParserFirstCallInit( Parser $parser ) {
 		$parser->setFunctionHook( 'maptemplate', [ self::class, 'renderMapTemplate' ]);
 		$parser->setFunctionHook( 'frametitle', [ self::class, 'renderFrameTitle' ], SFH_OBJECT_ARGS);
+		$parser->setFunctionHook( 'ifembeds', [ self::class, 'renderIfEmbeds' ]);
 	}
 
 	/* Parser function to split a string and pass each part as first parameter to a given template. */
@@ -37,5 +38,25 @@ class TransclusionFunctionsHooks {
 				return "";
 		}
 		return $frame->getTitle();
+	}
+
+	public static function renderIfEmbeds( Parser $parser, $tpl, $yes='', $no='') {
+		global $wgParserOutputHooks;
+		$title = Title::newFromText($tpl, NS_TEMPLATE);
+		if (!$title) return;
+		# we use a hook to also detect templates after the parser function
+		$parser->getOutput()->addOutputHook('ifembeds', [
+			'ns' => $title->getNamespace(),
+			'title' => $title->getDBKey(),
+			'yes' => $yes,
+			'no' => $no
+		]);
+		$wgParserOutputHooks['ifembeds'] = function($outputPage, $parserOutput, $data){
+			if (array_key_exists($data['ns'], $parserOutput->getTemplates())
+					&& array_key_exists($data['title'], $parserOutput->getTemplates()[$data['ns']]))
+				$outputPage->addWikiText($data['yes']);
+			else
+				$outputPage->addWikiText($data['no']);
+		};
 	}
 }
