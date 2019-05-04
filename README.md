@@ -30,7 +30,7 @@ The [MediaWiki page name magic words](https://www.mediawiki.org/wiki/Help:Magic_
 
 Usage: `{{#ifembeds:template|yes|no}}`
 
-Checks if the current page embeds the given template, if so the second parameter is output, otherwise the third parameter. Note that the function itself outputs nothing, the check occurs in a hook after the page has been parsed, which is necessary to detect transclusions after the parser function. This function allows the categorization of pages that all use one template based on the presence of another template.
+After the current page has been parsed, check if the given template was transcluded. If so the second parameter is parsed, otherwise the third parameter. The metadata of the ParserOutput is then merged into the current page. This function can be used to categorize pages depending on if a template was used.
 
 ## Known incompatibilities
 

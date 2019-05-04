@@ -18,7 +18,8 @@
 		"TransclusionFunctionsMagic": "TransclusionFunctions.i18n.php"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "TransclusionFunctionsHooks::onParserFirstCallInit"
+		"ParserFirstCallInit": "TransclusionFunctionsHooks::onParserFirstCallInit",
+		"ContentAlterParserOutput": "TransclusionFunctionsHooks::onContentAlterParserOutput"
 	},
 	"manifest_version": 1
 }
