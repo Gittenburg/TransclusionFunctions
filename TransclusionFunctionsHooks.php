@@ -56,7 +56,11 @@ class TransclusionFunctionsHooks {
 			$code = isset($output->getTemplates()[$title->getNamespace()][$title->getDBKey()]) ? $yes : $no;
 			$p = MediaWikiServices::getInstance()->getParser();
 			$p->parse($code, $title, new ParserOptions());
-			$output->mergeTrackingMetaDataFrom($p->getOutput());
+
+			if (method_exists($output, 'mergeTrackingMetaDataFrom')) # >=1.32
+				$output->mergeTrackingMetaDataFrom($p->getOutput());
+			else
+				$output->mCategories = array_replace($output->mCategories, $p->getOutput()->getCategories());
 		}
 	}
 }
