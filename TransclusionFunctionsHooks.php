@@ -50,7 +50,7 @@ class TransclusionFunctionsHooks {
 	}
 
 	public static function onContentAlterParserOutput( $content, $title, $output ) {
-		$checks = $output->getExtensionData('TransclusionFunctions_ifembeds');
+		$checks = $output->getExtensionData('TransclusionFunctions_ifembeds') ?? [];
 		foreach ($checks as $check){
 			list($title, $yes, $no) = $check;
 			$code = isset($output->getTemplates()[$title->getNamespace()][$title->getDBKey()]) ? $yes : $no;
