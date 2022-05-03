@@ -55,7 +55,7 @@ class TransclusionFunctionsHooks {
 			list($title, $yes, $no) = $check;
 			$code = isset($output->getTemplates()[$title->getNamespace()][$title->getDBKey()]) ? $yes : $no;
 			$p = MediaWikiServices::getInstance()->getParser();
-			$p->parse($code, $title, new ParserOptions());
+			$p->parse($code, $title, $p->getOptions());
 
 			if (method_exists($output, 'mergeTrackingMetaDataFrom')) # >=1.32
 				$output->mergeTrackingMetaDataFrom($p->getOutput());
